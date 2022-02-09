@@ -24,7 +24,8 @@ namespace UnhollowerRuntimeLib.XrefScans
             
             foreach (ProcessModule module in Process.GetCurrentProcess().Modules)
             {
-                if (module.ModuleName == "GameAssembly.dll")
+                // if (module.ModuleName == "GameAssembly.dll")
+                if (module.ModuleName == "UserAssembly.dll")
                 {
                     GameAssemblyBase = (long) module.BaseAddress;
                     break;

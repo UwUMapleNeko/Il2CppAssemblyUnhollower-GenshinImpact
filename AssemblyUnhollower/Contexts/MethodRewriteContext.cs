@@ -224,6 +224,10 @@ namespace AssemblyUnhollower.Contexts
             if (DeclaringType.AssemblyContext.GlobalContext.Options.RenameMap.TryGetValue(
                 DeclaringType.NewType.GetNamespacePrefix() + "::" + unmangleMethodNameWithSignature, out var newName))
                 unmangleMethodNameWithSignature = newName;
+
+            if (DeclaringType.AssemblyContext.GlobalContext.Options.RenameMap.TryGetValue(
+                OriginalMethod.Name, out var newName2))
+                unmangleMethodNameWithSignature = newName2;
             return unmangleMethodNameWithSignature;
         }
         

@@ -1,4 +1,7 @@
 # Il2CppAssemblyUnhollower
+
+### Please join our Discord for help: https://discord.gg/qAzg2YU4eq
+
 A tool to generate Managed->IL2CPP proxy assemblies from
  [Il2CppDumper](https://github.com/Perfare/Il2CppDumper )'s output.
 

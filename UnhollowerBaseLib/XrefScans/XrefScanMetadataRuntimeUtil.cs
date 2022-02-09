@@ -20,7 +20,9 @@ namespace UnhollowerRuntimeLib.XrefScans
         private static unsafe void FindMetadataInitForMethod()
         {
             var unityObjectCctor = AppDomain.CurrentDomain.GetAssemblies()
-                .Single(it => it.GetSimpleName() == "UnityEngine.CoreModule").GetType("UnityEngine.Object")
+                // .Single(it => it.GetSimpleName() == "UnityEngine.CoreModule").GetType("UnityEngine.Object")
+                // TODO: Fix? Xref scanning doesn't work anyway...
+                .Single(it => it.GetName().Name == "UnityEngine.CoreModule").GetType("UnityEngine.Object")
                 .GetConstructors(BindingFlags.Static | BindingFlags.NonPublic).Single();
             var nativeMethodInfo = UnityVersionHandler.GetMethodFromReflection(unityObjectCctor.Pointer);
             ourMetadataInitForMethodPointer = XrefScannerLowLevel.JumpTargets(*(IntPtr*) nativeMethodInfo).First();

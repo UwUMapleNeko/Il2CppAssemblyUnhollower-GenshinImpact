@@ -80,7 +80,10 @@ namespace AssemblyUnhollower.Passes
                         
             if (assemblyContext.GlobalContext.Options.RenameMap.TryGetValue(declaringType.GetNamespacePrefix() + "::" + unmanglePropertyName, out var newName))
                 unmanglePropertyName = newName;
-            
+
+            if (assemblyContext.GlobalContext.Options.RenameMap.TryGetValue(prop.Name, out var newName2))
+                unmanglePropertyName = newName2;
+
             return unmanglePropertyName;
         }
     }

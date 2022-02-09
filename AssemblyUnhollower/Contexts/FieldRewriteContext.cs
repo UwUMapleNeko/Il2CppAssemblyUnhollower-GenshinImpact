@@ -62,10 +62,13 @@ namespace AssemblyUnhollower.Contexts
             renamedFieldCounts[unmangleFieldNameBase] = count + 1;
 
             unmangleFieldNameBase += "_" + count;
-            
+
             if (DeclaringType.AssemblyContext.GlobalContext.Options.RenameMap.TryGetValue(
                 DeclaringType.NewType.GetNamespacePrefix() + "." + DeclaringType.NewType.Name + "::" + unmangleFieldNameBase, out var newName))
                 unmangleFieldNameBase = newName;
+
+            if (DeclaringType.AssemblyContext.GlobalContext.Options.RenameMap.TryGetValue(field.Name, out var newName2))
+                unmangleFieldNameBase = newName2;
             
             return unmangleFieldNameBase;
         }

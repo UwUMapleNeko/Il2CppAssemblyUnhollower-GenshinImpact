@@ -69,6 +69,24 @@ namespace AssemblyUnhollower.Passes
                         convertedTypeName = newName;
                 }
 
+                if (assemblyContextGlobalContext.Options.RenameMap.TryGetValue(type.Name, out var newName2)) {
+                    var lastSlashPosition = newName2.LastIndexOf("/");
+                    if (lastSlashPosition >= 0) {
+                        var name = newName2.Substring(lastSlashPosition + 1);
+                        return (null, name);
+                    }
+
+                    var lastDotPosition = newName2.LastIndexOf(".");
+                    if (lastDotPosition >= 0) {
+                        var ns = newName2.Substring(0, lastDotPosition);
+                        var name = newName2.Substring(lastDotPosition + 1);
+                        name = name.Replace(ns, "");
+                        return (ns, name);
+                    }
+                    else
+                        convertedTypeName = newName2;
+                }
+
                 return (null, convertedTypeName);
             }
 

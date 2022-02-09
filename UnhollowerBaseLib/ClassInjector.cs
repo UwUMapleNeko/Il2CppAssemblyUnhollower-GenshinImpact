@@ -633,7 +633,8 @@ namespace UnhollowerRuntimeLib
 
         private static void HookGenericMethodGetMethod()
         {
-            var lib = LoadLibrary("GameAssembly.dll");
+            // var lib = LoadLibrary("GameAssembly.dll");
+            var lib = LoadLibrary("UserAssembly.dll");
             var getVirtualMethodEntryPoint = GetProcAddress(lib, nameof(IL2CPP.il2cpp_object_get_virtual_method));
             LogSupport.Trace($"il2cpp_object_get_virtual_method entry address: {getVirtualMethodEntryPoint}");
 
@@ -692,7 +693,8 @@ namespace UnhollowerRuntimeLib
 
         private static void HookClassFromType()
         {
-            var lib = LoadLibrary("GameAssembly.dll");
+            // var lib = LoadLibrary("GameAssembly.dll");
+            var lib = LoadLibrary("UserAssembly.dll");
             var classFromTypeEntryPoint = GetProcAddress(lib, nameof(IL2CPP.il2cpp_class_from_il2cpp_type));
             LogSupport.Trace($"il2cpp_class_from_il2cpp_type entry address: {classFromTypeEntryPoint}");
 
@@ -739,7 +741,8 @@ namespace UnhollowerRuntimeLib
 
         private static void HookClassFromName()
         {
-            var lib = LoadLibrary("GameAssembly.dll");
+            // var lib = LoadLibrary("GameAssembly.dll");
+            var lib = LoadLibrary("UserAssembly.dll");
             var classFromNameEntryPoint = GetProcAddress(lib, nameof(IL2CPP.il2cpp_class_from_name));
             LogSupport.Trace($"il2cpp_class_from_name entry address: {classFromNameEntryPoint}");
 

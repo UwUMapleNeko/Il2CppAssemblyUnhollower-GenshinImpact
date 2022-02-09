@@ -340,4 +340,12 @@ namespace UnhollowerBaseLib.Runtime
         public Il2CppGenericContext context;
     };
 
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct Il2CppReflectionMethod {
+        public Il2CppObject il2CppObject;
+        public Il2CppMethodInfo* method;
+        public IntPtr name;
+        public IntPtr reftype;
+    };
+
 }

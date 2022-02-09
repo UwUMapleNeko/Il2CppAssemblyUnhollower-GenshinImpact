@@ -330,6 +330,7 @@ namespace AssemblyUnhollower
             {
                 var line = reader.ReadLine();
                 if(string.IsNullOrEmpty(line) || line.StartsWith("#")) continue;
+                line = line.Replace("⇨", ";");
                 var split = line.Split(';');
                 if(split.Length < 2) continue;
                 options.RenameMap[split[0]] = split[1];

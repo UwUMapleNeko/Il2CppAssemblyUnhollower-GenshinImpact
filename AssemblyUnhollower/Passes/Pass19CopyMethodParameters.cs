@@ -22,7 +22,10 @@ namespace AssemblyUnhollower.Passes
                             var newName = originalMethodParameter.Name.IsObfuscated(context.Options)
                                 ? $"param_{originalMethodParameter.Sequence}"
                                 : originalMethodParameter.Name;
-                            
+
+                            if (context.Options.RenameMap.TryGetValue(originalMethodParameter.Name, out var newName2))
+                                newName = newName2;
+
                             var newParameter = new ParameterDefinition(newName,
                                 originalMethodParameter.Attributes & ~ParameterAttributes.HasFieldMarshal,
                                 assemblyContext.RewriteTypeRef(originalMethodParameter.ParameterType));
